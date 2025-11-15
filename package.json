@@ -1,0 +1,19 @@
+{
+  "name": "multisig-wallet",
+  "version": "1.0.0",
+  "description": "Multisig Wallet - Ví đa chữ ký - NGUYỄN ĐĂNG DUY - D17CNPM1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["blockchain", "multisig", "wallet"],
+  "author": "NGUYỄN ĐĂNG DUY - 22810310021",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+

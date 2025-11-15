@@ -1,0 +1,179 @@
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.pending-section,
+.executed-section {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pending-section h2,
+.executed-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-style: italic;
+}
+
+.transactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.transaction-card {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  background: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.transaction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card.pending {
+  border-color: #ffa726;
+  background: #fff8e1;
+}
+
+.transaction-card.executed {
+  border-color: #66bb6a;
+  background: #e8f5e9;
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tx-id {
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.status-badge.pending {
+  background: #ffa726;
+  color: white;
+}
+
+.status-badge.executed {
+  background: #66bb6a;
+  color: white;
+}
+
+.status-badge.failed {
+  background: #ef5350;
+  color: white;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-row .label {
+  font-weight: bold;
+  color: #555;
+}
+
+.detail-row .value {
+  color: #333;
+  font-family: monospace;
+}
+
+.detail-row .value.amount {
+  color: #667eea;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.signatures-list {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.signatures-list strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.signers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.signer-badge {
+  background: #667eea;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-family: monospace;
+}
+
+.sign-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sign-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.already-signed {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: #e0e0e0;
+  color: #666;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
