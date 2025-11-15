@@ -150,7 +150,28 @@ function MetaMaskDebug() {
                             }],
                           });
                         } catch (addError) {
-                          alert('Không thể thêm network. Vui lòng thêm thủ công theo hướng dẫn trong METAMASK_SETUP.md');
+                          const manualInstructions = `
+⚠️ KHÔNG THỂ TỰ ĐỘNG THÊM NETWORK
+
+Vui lòng thêm network thủ công vào MetaMask:
+
+1. Mở MetaMask
+2. Click network dropdown (góc trên)
+3. Click "Add Network" hoặc "Add a network manually"
+4. Điền thông tin:
+   - Network Name: Hardhat Local
+   - RPC URL: http://127.0.0.1:8545
+   - Chain ID: 31337
+   - Currency Symbol: ETH
+5. Click "Save"
+
+Xem hướng dẫn chi tiết trong file:
+THEM_HARDHAT_NETWORK_METAMASK.md
+
+Lỗi: ${addError.message || 'Unknown error'}
+                          `;
+                          alert(manualInstructions);
+                          console.error('Error adding network:', addError);
                         }
                       } else {
                         alert('Không thể chuyển network: ' + switchError.message);
@@ -202,8 +223,14 @@ function MetaMaskDebug() {
               <p><strong>Giải pháp:</strong></p>
               <ol>
                 <li>Click nút <strong>"🔄 Chuyển sang Hardhat Local"</strong> ở trên để tự động chuyển network</li>
-                <li>Hoặc thủ công: Mở MetaMask → Click network dropdown → Chọn "Hardhat Local"</li>
-                <li>Nếu chưa có "Hardhat Local", nút trên sẽ tự động thêm network vào MetaMask</li>
+                <li><strong>Nếu nút không hoạt động:</strong> Thêm network thủ công:
+                  <ul>
+                    <li>Mở MetaMask → Click network dropdown → "Add Network"</li>
+                    <li>Điền: Network Name = "Hardhat Local", RPC URL = "http://127.0.0.1:8545", Chain ID = "31337", Currency = "ETH"</li>
+                    <li>Xem file <code>THEM_HARDHAT_NETWORK_METAMASK.md</code> để có hướng dẫn chi tiết</li>
+                  </ul>
+                </li>
+                <li>Hoặc thủ công: Mở MetaMask → Click network dropdown → Chọn "Hardhat Local" (nếu đã có)</li>
                 <li>Đảm bảo Hardhat node đang chạy: <code>npm run node</code></li>
               </ol>
             </div>
