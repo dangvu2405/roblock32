@@ -7,13 +7,26 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm run dev",
     "client": "cd frontend && npm start",
-    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "node": "hardhat node",
+    "check-balance": "hardhat run scripts/checkBalance.js --network localhost"
   },
-  "keywords": ["blockchain", "multisig", "wallet"],
+  "keywords": ["blockchain", "multisig", "wallet", "ethereum", "solidity"],
   "author": "NGUYỄN ĐĂNG DUY - 22810310021",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "ethers": "^6.9.0"
   }
 }
 

@@ -9,8 +9,13 @@ function WalletInfo({ walletInfo }) {
       <h2>Thông tin ví</h2>
       <div className="info-grid">
         <div className="info-card">
-          <div className="info-label">Số dư</div>
-          <div className="info-value balance">{walletInfo.balance} tokens</div>
+          <div className="info-label">Số dư ví</div>
+          <div className="info-value balance">{walletInfo.balance} {walletInfo.mode === 'blockchain' ? 'ETH' : 'tokens'}</div>
+          <div className="info-note" style={{ fontSize: '0.85em', color: '#666', marginTop: '5px' }}>
+            {walletInfo.mode === 'blockchain' 
+              ? '💡 Số dư của contract (không phải số dư của từng owner)'
+              : '💡 Số dư chung của ví'}
+          </div>
         </div>
         <div className="info-card">
           <div className="info-label">Số chữ ký yêu cầu</div>
