@@ -37,44 +37,35 @@ npm run install-all
 
 ## Chạy ứng dụng
 
-### Simulation Mode (Mặc định)
+### ⚡ Quick Start (Simulation Mode)
 
 ```bash
 npm run dev
 ```
 
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
+Mở trình duyệt: http://localhost:3000
 
-### Blockchain Mode
+### 📖 Hướng dẫn chi tiết
 
-1. **Chạy Hardhat node:**
-```bash
-npm run node
-```
+**👉 Xem file [HUONG_DAN_CHAY_PROJECT.md](HUONG_DAN_CHAY_PROJECT.md) để có hướng dẫn đầy đủ:**
+- ✅ Cài đặt từng bước chi tiết
+- ✅ Chạy Simulation Mode
+- ✅ Chạy Blockchain Mode với MetaMask
+- ✅ Troubleshooting các lỗi thường gặp
+- ✅ Checklist kiểm tra
 
-2. **Deploy contract:**
-```bash
-npm run deploy:local
-```
+### 🔗 Blockchain Mode (Tóm tắt)
 
-3. **Cấu hình `.env` trong `backend/`:**
-```
-MODE=blockchain
-CONTRACT_ADDRESS=<address_từ_deploy>
-NETWORK=localhost
-```
-
-4. **Chạy ứng dụng:**
-```bash
-npm run dev
-```
-
-5. **Setup MetaMask:**
-   - Network: Hardhat Local
-   - RPC URL: http://127.0.0.1:8545
-   - Chain ID: 31337
-   - Import test account từ Hardhat node
+1. Chạy Hardhat node: `npm run node`
+2. Deploy contract: `npm run deploy:local`
+3. Cấu hình `backend/.env`:
+   ```
+   MODE=blockchain
+   CONTRACT_ADDRESS=<address_từ_deploy>
+   NETWORK=localhost
+   ```
+4. Chạy app: `npm run dev`
+5. Setup MetaMask (xem hướng dẫn chi tiết trong file trên)
 
 ## Cấu trúc project
 
