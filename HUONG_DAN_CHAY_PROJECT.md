@@ -328,19 +328,101 @@ npm run install-all
 2. Kiểm tra port 8545 không bị block bởi firewall
 3. Thử restart Hardhat node
 
+### Lỗi: Warning Node.js version không được hỗ trợ
+
+**Lỗi:** `WARNING: You are currently using Node.js v18.15.0, which is not supported by Hardhat`
+
+**Giải pháp:**
+
+**Cách 1: Bỏ qua warning (Khuyến nghị)**
+- Warning này thường không ảnh hưởng đến việc compile và chạy
+- Hardhat vẫn hoạt động bình thường với Node.js 18.x
+- Có thể tiếp tục sử dụng
+
+**Cách 2: Update Hardhat (Nếu gặp lỗi thực sự)**
+```bash
+npm install --save-dev hardhat@latest
+```
+
+**Cách 3: Downgrade Node.js (Nếu cần)**
+- Cài đặt Node.js 16.x hoặc 20.x từ https://nodejs.org/
+- Sử dụng nvm (Node Version Manager) để quản lý nhiều phiên bản Node.js
+
+### Lỗi: "Nothing to compile"
+
+**Lỗi:** `Nothing to compile` khi chạy `npm run compile`
+
+**Nguyên nhân:**
+1. File contract không tồn tại trong thư mục `contracts/`
+2. Đã compile rồi và không có thay đổi
+3. Hardhat cache đang lưu trữ bản compile cũ
+
+**Giải pháp:**
+
+**Bước 1: Kiểm tra file contract**
+```bash
+# Kiểm tra xem file contract có tồn tại không
+dir contracts
+# Hoặc trên Linux/Mac:
+ls contracts
+```
+
+Nếu không có file `MultisigWallet.sol`, cần:
+1. Kiểm tra lại khi clone repository
+2. Đảm bảo file `contracts/MultisigWallet.sol` có trong project
+
+**Bước 2: Force compile lại**
+```bash
+# Xóa cache và artifacts
+rm -rf cache artifacts
+# Hoặc trên Windows PowerShell:
+Remove-Item -Recurse -Force cache, artifacts
+
+# Compile lại
+npm run compile
+```
+
+**Bước 3: Kiểm tra hardhat.config.js**
+Đảm bảo trong `hardhat.config.js` có:
+```javascript
+paths: {
+  sources: "./contracts",
+  tests: "./test",
+  cache: "./cache",
+  artifacts: "./artifacts",
+}
+```
+
+**Bước 4: Nếu vẫn không được, kiểm tra lại cấu trúc project**
+```bash
+# Cấu trúc đúng phải là:
+roblock32/
+├── contracts/
+│   └── MultisigWallet.sol  ← File này phải có
+├── hardhat.config.js
+├── package.json
+└── ...
+```
+
 ### Lỗi: Contract không tìm thấy
 
 **Lỗi:** `Contract not found` hoặc `Contract ABI not found`
 
 **Giải pháp:**
 ```bash
-# 1. Compile contract
+# 1. Xóa cache và compile lại
+rm -rf cache artifacts
 npm run compile
 
-# 2. Deploy lại contract
+# 2. Kiểm tra artifacts đã được tạo
+dir artifacts\contracts
+# Hoặc trên Linux/Mac:
+ls artifacts/contracts
+
+# 3. Deploy lại contract
 npm run deploy:local
 
-# 3. Cập nhật CONTRACT_ADDRESS trong backend/.env
+# 4. Cập nhật CONTRACT_ADDRESS trong backend/.env
 ```
 
 ### Lỗi: MetaMask không kết nối được
